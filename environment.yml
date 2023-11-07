@@ -1,21 +1,31 @@
-name: cellpose
+name: gpu-cellpose-coolix
+channels:
+  - pytorch
+  - nvidia
+  - defaults
 dependencies:
-  - python==3.8.5
+  - python==3.11.*
+  - pytorch
+  - torchvision
+  - torchaudio
+  - pytorch-cuda=11.8
   - pip
   - pip:
     - qtpy
-#    - PyQt5.sip
-    - numpy>=1.20.0
-    - numba>=0.43.1
+    - numpy>=1.26.0
+    - numba>=0.58.0
     - scipy
-    - torch>=1.6
+    - torch>=2.1
     - opencv-python-headless
     - pyqtgraph>=0.11.0rc0
     - natsort
-    - google-cloud-storage
+    - GitPython
     - tqdm
     - tifffile
     - fastremap
+    - scikit-image>=0.22.0
+    - scikit-learn>=1.3.2
+    - scipy>=1.11.3
     - cellpose
     - roifile
     
