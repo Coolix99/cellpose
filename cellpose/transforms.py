@@ -189,11 +189,12 @@ def make_tiles(imgi, bsize=224, augment=False, tile_overlap=0.1):
         
     return IMG, ysub, xsub, Ly, Lx
 
-def normalize99(Y, lower=1,upper=99):
+def normalize99(Y, lower=1,upper=99,threshold=0.01):
     """ normalize image so 0.0 is 1st percentile and 1.0 is 99th percentile """
     X = Y.copy()
-    x01 = np.percentile(X, lower)
-    x99 = np.percentile(X, upper)
+    non_zero_pixels = X[X > threshold]
+    x01 = np.percentile(non_zero_pixels, lower)
+    x99 = np.percentile(non_zero_pixels, upper)
     X = (X - x01) / (x99 - x01)
     return X
 
